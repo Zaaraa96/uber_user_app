@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'authentication/authentication_screen.dart';
+import 'check_connectivity_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(
         useMaterial3: true,
       ),
-      home: const AuthenticationScreen(),
+      home: const CheckConnectivityScreen(child: AuthenticationScreen()),
     );
   }
 }
