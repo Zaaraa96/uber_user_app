@@ -52,9 +52,16 @@ class _CheckConnectivityScreenState extends State<CheckConnectivityScreen> {
       contentPadding: const EdgeInsets.symmetric(
       horizontal: 20, vertical: 8),
       title: const Text('you are not connected to internet'),
-      content: const Padding(
+      content:  Padding(
         padding: EdgeInsets.all(8.0),
-        child: Text('connect to internet and try again'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset('assets/images/internet.png', height: 200,),
+            SizedBox(height: 20,),
+            Text('connect to internet and try again'),
+          ],
+        ),
       ),
 
       );
