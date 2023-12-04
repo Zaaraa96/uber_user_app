@@ -19,16 +19,16 @@ class _CheckConnectivityScreenState extends State<CheckConnectivityScreen> {
 
   void checkResult(ConnectivityResult result) {
   print(result);
-  if (result == ConnectivityResult.none || !(result == ConnectivityResult.mobile || result == ConnectivityResult.wifi))
+  if (result == ConnectivityResult.none || !
+  (result == ConnectivityResult.mobile || result == ConnectivityResult.wifi || result == ConnectivityResult.other))
   {
   // not connected to anything
   //should show alarm
-  showConnectivityDialog();
   setState(() {
     canPop = false;
   });
   }
-  if (result == ConnectivityResult.mobile || result == ConnectivityResult.wifi) {
+  if (result == ConnectivityResult.mobile || result == ConnectivityResult.wifi || result == ConnectivityResult.other) {
   // is connected to internet
   // should dismiss the alarm
     setState(() {
