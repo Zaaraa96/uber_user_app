@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'authentication/authentication_screen.dart';
+import 'authentication/custom_sign_in.dart';
 import 'check_connectivity_screen.dart';
 import 'firebase_options.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData.dark(
         useMaterial3: true,
       ),
-      home: const CheckConnectivityScreen(child: AuthenticationScreen()),
+      home: const CheckConnectivityScreen(child: CustomSignInScreen()),
     );
   }
 }
