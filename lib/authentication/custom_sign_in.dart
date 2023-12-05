@@ -2,6 +2,8 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../router.dart';
+
 class CustomSignInScreen extends ConsumerWidget {
   const CustomSignInScreen({super.key});
 
@@ -32,6 +34,14 @@ class CustomSignInScreen extends ConsumerWidget {
                   opacity: 0.8,
                   child: SignInScreen(
                     providers: authProviders,
+                    actions: [
+                      AuthStateChangeAction<SignedIn>((context, state) {
+                        goToProfileScreen(context);
+                      }),
+                      AuthStateChangeAction<UserCreated>((context, state) {
+                        goToProfileScreen(context);
+                      }),
+                    ],
                   ),
                 ),
               ),
