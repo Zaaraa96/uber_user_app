@@ -84,4 +84,9 @@ class _CheckConnectivityScreenState extends State<CheckConnectivityScreen> {
       ],
     );
   }
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 }
