@@ -2,10 +2,13 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../firestore_repository.dart';
 import '../router.dart';
 import 'auth_providers_provider.dart';
+import 'firebase_auth_provider.dart';
 
 class CustomSignInScreen extends ConsumerWidget {
+
   const CustomSignInScreen({super.key});
 
   @override
@@ -40,7 +43,11 @@ class CustomSignInScreen extends ConsumerWidget {
                         goToProfileScreen(context);
                       }),
                       AuthStateChangeAction<UserCreated>((context, state) {
-                        goToProfileScreen(context);
+                        final user = ref.read(firebaseAuthProvider).currentUser;
+                        if(user != null) {
+                          ref.read(firestoreRepositoryProvider).addUser(uid: user.uid, name: user.displayName?? '', email: user.email!);
+                          goToProfileScreen(context);
+                        }
                       }),
                     ],
                   ),
